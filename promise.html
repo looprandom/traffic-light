@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.warpper{
+			width: 600px;
+			margin: 100px auto;
+		}
+		.warpper div{
+			margin: 25px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50px;
+			background-color: gray;	
+			float: left;		
+		}
+		.light.red{
+			background-color: red;
+		}
+		.light.green{
+			background-color: green;
+		}
+		.light.blue{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="warpper">
+		<div class="red"></div>
+		<div class="green"></div>
+		<div class="blue"></div>
+	</div>
+	<script>
+		function red(){
+		   let lights =	document.querySelectorAll('.light');
+			for(let i = 0; i < lights.length; i++){
+				lights[i].classList.remove('light');
+			}
+			document.querySelector('.red').classList.add('light');
+		}
+		function green(){
+			let lights =	document.querySelectorAll('.light');
+			for(let i = 0; i < lights.length; i++){
+				lights[i].classList.remove('light');
+			}
+			document.querySelector('.green').classList.add('light');
+		}
+		function blue(){
+			let lights = document.querySelectorAll('.light');
+			for(let i = 0; i < lights.length; i++){
+				lights[i].classList.remove('light');
+			}
+			document.querySelector('.blue').classList.add('light');
+		}
+
+		function sleep(t){
+			return new Promise((resolve)=>{
+				setTimeout(function(){
+					resolve()
+				},t);
+			})
+		}
+		function go(){
+			red();
+			sleep(1000).then(function(){
+				green();
+				return sleep(1000);
+			}).then(function(){
+				blue();
+				return sleep(1000)
+			}).then(function(){
+				go();
+			})	
+		}
+
+	</script>
+</body>
+</html>

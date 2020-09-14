@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.warpper{
+			width: 600px;
+			margin: 100px auto;
+		}
+		.warpper div{
+			margin: 25px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50px;
+			background-color: gray;	
+			float: left;		
+		}
+		.light.red{
+			background-color: red;
+		}
+		.light.green{
+			background-color: green;
+		}
+		.light.blue{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="warpper">
+		<div class="red"></div>
+		<div class="green"></div>
+		<div class="blue"></div>
+	</div>
+	<script>
+		function red(){
+		   let lights =	document.querySelectorAll('.light');
+			for(let i = 0; i < lights.length; i++){
+				lights[i].classList.remove('light');
+			}
+			document.querySelector('.red').classList.add('light');
+		}
+		function green(){
+			let lights =	document.querySelectorAll('.light');
+			for(let i = 0; i < lights.length; i++){
+				lights[i].classList.remove('light');
+			}
+			document.querySelector('.green').classList.add('light');
+		}
+		function blue(){
+			let lights = document.querySelectorAll('.light');
+			for(let i = 0; i < lights.length; i++){
+				lights[i].classList.remove('light');
+			}
+			document.querySelector('.blue').classList.add('light');
+		}
+		function go(){
+			setTimeout(function(){
+				red();
+				setTimeout(function(){
+					green();
+					setTimeout(function(){
+						blue();
+						go();
+					},1000)	
+				},1000)
+			},1000)
+		}
+
+	</script>
+</body>
+</html>
